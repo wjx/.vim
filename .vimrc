@@ -686,7 +686,7 @@ set guioptions-=m "get rid of menu
 nnoremap diff :TMiniBufExplorer<cr>:vert diffsplit 
 
 "Toggle quickfix
-nnoremap <silent> <c-f> :call QuickfixToggle()<cr>
+nnoremap <silent> <c-a> :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 function! QuickfixToggle()
@@ -700,6 +700,14 @@ function! QuickfixToggle()
         let g:quickfix_is_open = 1
     endif
 endfunction
+
+"-------------cursor in terminal----------------
+if has("autocmd")
+au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+endif
+"-------------cursor in terminal----------------
 
 "-------------move cursor under insert mode----------------
 "left
