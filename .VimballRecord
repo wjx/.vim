@@ -1,0 +1,1 @@
+DrawIt.vba: call delete('/home/likewise-open/SAGEMWIRELESS/93205/.vim/plugin/DrawItPlugin.vim')|call delete('/home/likewise-open/SAGEMWIRELESS/93205/.vim/plugin/cecutil.vim')|call delete('/home/likewise-open/SAGEMWIRELESS/93205/.vim/autoload/DrawIt.vim')|call delete('/home/likewise-open/SAGEMWIRELESS/93205/.vim/doc/DrawIt.txt')
