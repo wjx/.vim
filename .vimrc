@@ -686,7 +686,7 @@ set guioptions-=m "get rid of menu
 nnoremap diff :TMiniBufExplorer<cr>:vert diffsplit 
 
 "Toggle quickfix
-nnoremap <silent> <c-q> :call QuickfixToggle()<cr>
+nnoremap <silent> <c-f> :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 function! QuickfixToggle()

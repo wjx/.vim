@@ -6,7 +6,7 @@ nnoremap <leader>gp :set operatorfunc=<SID>GrepOperatorWithInput<cr>g@
 vnoremap <leader>gp :<c-u>call <SID>GrepOperatorWithInput(visualmode())<cr>
 
 function! s:GrepOperatorWithInput(type)
-    let saved_unnamed_register = @@
+    let l:saved_unnamed_register = @@
 
     if a:type ==# 'v'
         normal! `<v`>y
@@ -18,21 +18,28 @@ function! s:GrepOperatorWithInput(type)
 
     let l:input = input('Plz Input Grep Path:')
     if l:input ==# ''
-        l:input = '.'
+        let l:grepath = '.'
+    else
+        "FIXME: accept l:input as absolute or relative path according to if l:input starts with '/'
+        let l:grepath = './' . l:input
     endif
 
-    execute "grep! -rsw " . shellescape(@@) . " " . l:input
-    if g:quickfix_is_open == 0
+    silent execute "grep! -rsw " . shellescape(@@) . " " . l:grepath
+    if g:quickfix_is_open
+        botright cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
         botright copen
         let g:quickfix_is_open = 1
-        execute g:quickfix_return_to_window . "wincmd w"
     endif
 
-    let @@ = saved_unnamed_register
+    let @@ = l:saved_unnamed_register
 endfunction
 
 function! s:GrepOperator(type)
-    let saved_unnamed_register = @@
+    let l:saved_unnamed_register = @@
 
     if a:type ==# 'v'
         normal! `<v`>y
@@ -42,12 +49,16 @@ function! s:GrepOperator(type)
         return
     endif
 
-    execute "grep! -rsw " . shellescape(@@) . " ."
-    if g:quickfix_is_open == 0
+    silent execute "grep! -rsw " . shellescape(@@) . " ."
+    if g:quickfix_is_open
+        botright cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
         botright copen
         let g:quickfix_is_open = 1
-        execute g:quickfix_return_to_window . "wincmd w"
     endif
 
-    let @@ = saved_unnamed_register
+    let @@ = l:saved_unnamed_register
 endfunction
