@@ -14,8 +14,6 @@ function! s:EasyGrep()
         let l:pathtogrep = './'
     endif
 
-    echom l:patterntogrep
-    echom l:pathtogrep
     silent execute "grep! -rsw " . l:patterntogrep . " " . l:pathtogrep
 
     if g:quickfix_is_open
