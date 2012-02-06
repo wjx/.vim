@@ -738,7 +738,10 @@ augroup END
 "}}}
 
 "Add .vim/bin/ into PATH
-let $PATH = $PATH . '~/.vim/bin/'
+augroup addPATH
+    au!
+    au VimEnter * let $PATH = $PATH . ':~/.vim/bin/'
+augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -878,9 +881,9 @@ let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
 
 function! SetRootOfTheProject(path,project)
     exe 'cd '.a:path
-    if project ==# 'android'
+    if a:project ==# 'android'
         exe '!genAndroidFileTags&&genAndroidCtagAndCscope'
-    elseif project ==# 'general'
+    elseif a:project ==# 'general'
         exe '!genFileTags&&genCtagAndCscope'
     endif
     let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
@@ -897,10 +900,11 @@ function! SetRootOfTheProject(path,project)
     "--------
 endfunction
 function! SetHereTheRoot(project)
-    call SetRootOfTheProject('.',project)
+    call SetRootOfTheProject('.',a:project)
 endfunction
 nmap <leader>acf :call SetHereTheRoot('android')<CR>
 nmap <leader>cf :call SetHereTheRoot('general')<CR>
+
 function! SetSpecifiedPathTheRoot(project)
     call SetRootOfTheProject(input('Please Input Project root path:'),project)
 endfunction
