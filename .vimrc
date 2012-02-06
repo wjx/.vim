@@ -171,58 +171,58 @@ syntax enable "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
-  set gfn=Menlo:h14
-  set shell=/bin/bash
+    set gfn=Menlo:h14
+    set shell=/bin/bash
 elseif MySys() == "windows"
-  set gfn=Bitstream\ Vera\ Sans\ Mono:h10
+    set gfn=Bitstream\ Vera\ Sans\ Mono:h10
 elseif MySys() == "linux"
-  set gfn=Monospace\ 12
-  set shell=/bin/bash
+    set gfn=Monospace\ 12
+    set shell=/bin/bash
 endif
 
 if has("gui_running")
-  set guioptions-=T
-  set t_Co=256
-  set background=dark
-  "colorscheme blue
-  "colorscheme delek
-  "colorscheme evening
-  "colorscheme murphy
-  "colorscheme slate
-  "colorscheme darkblue
-  "colorscheme desert
-  colorscheme koehler
-  "colorscheme pablo
-  "colorscheme ron
-  "colorscheme torte
-  "colorscheme default
-  "colorscheme elflord
-  "colorscheme morning
-  "colorscheme peachpuff
-  "colorscheme shine
-  "colorscheme zellner
-  set nonu
+    set guioptions-=T
+    set t_Co=256
+    set background=dark
+    "colorscheme blue
+    "colorscheme delek
+    "colorscheme evening
+    "colorscheme murphy
+    "colorscheme slate
+    "colorscheme darkblue
+    "colorscheme desert
+    colorscheme koehler
+    "colorscheme pablo
+    "colorscheme ron
+    "colorscheme torte
+    "colorscheme default
+    "colorscheme elflord
+    "colorscheme morning
+    "colorscheme peachpuff
+    "colorscheme shine
+    "colorscheme zellner
+    set nonu
 else
-  "colorscheme blue
-  "colorscheme delek
-  "colorscheme evening
-  "colorscheme murphy
-  "colorscheme slate
-  "colorscheme darkblue
-  "colorscheme desert
-  "colorscheme koehler
-  "colorscheme pablo
-  "colorscheme ron
-  "colorscheme torte
-  "colorscheme default
-  "colorscheme elflord
-  "colorscheme morning
-  "colorscheme peachpuff
-  "colorscheme shine
-  "colorscheme zellner
-  set background=light
-  set t_Co=256
-  set nonu
+    "colorscheme blue
+    "colorscheme delek
+    "colorscheme evening
+    "colorscheme murphy
+    "colorscheme slate
+    "colorscheme darkblue
+    "colorscheme desert
+    "colorscheme koehler
+    "colorscheme pablo
+    "colorscheme ron
+    "colorscheme torte
+    "colorscheme default
+    "colorscheme elflord
+    "colorscheme morning
+    "colorscheme peachpuff
+    "colorscheme shine
+    "colorscheme zellner
+    set background=light
+    set t_Co=256
+    set nonu
 endif
 
 set encoding=utf8
@@ -245,9 +245,9 @@ set noswapfile
 "Persistent undo
 try
     if MySys() == "windows"
-      set undodir=C:\Windows\Temp
+        set undodir=C:\Windows\Temp
     else
-      set undodir=~/.vim_runtime/undodir
+        set undodir=~/.vim_runtime/undodir
     endif
 
     set undofile
@@ -340,29 +340,29 @@ cmap ½ $
 
 
 func! Cwd()
-  let cwd = getcwd()
-  return "e " . cwd 
+    let cwd = getcwd()
+    return "e " . cwd 
 endfunc
 
 func! DeleteTillSlash()
-  let g:cmd = getcmdline()
-  if MySys() == "linux" || MySys() == "mac"
-    let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
-  else
-    let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
-  endif
-  if g:cmd == g:cmd_edited
+    let g:cmd = getcmdline()
     if MySys() == "linux" || MySys() == "mac"
-      let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
     else
-      let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
     endif
-  endif
-  return g:cmd_edited
+    if g:cmd == g:cmd_edited
+        if MySys() == "linux" || MySys() == "mac"
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
+        else
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
+        endif
+    endif
+    return g:cmd_edited
 endfunc
 
 func! CurrentFileDir(cmd)
-  return a:cmd . " " . expand("%:p:h") . "/"
+    return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
 
 
@@ -402,28 +402,28 @@ map <leader>cd :cd %:p:h<cr>
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
 endfunction
 
 " Specify the behavior when switching between buffers 
 try
-  set switchbuf=usetab
-  set stal=2
+    set switchbuf=usetab
+    set stal=2
 catch
 endtry
 
@@ -491,17 +491,17 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if MySys() == "mac"
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+    nmap <D-j> <M-j>
+    nmap <D-k> <M-k>
+    vmap <D-j> <M-j>
+    vmap <D-k> <M-k>
 endif
 
 "Delete trailing white space, useful for Python ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 
@@ -600,7 +600,7 @@ function! JavaScriptFold()
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
     function! FoldText()
-    return substitute(getline(v:foldstart), '{.*', '{...}', '')
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
     endfunction
     setl foldtext=FoldText()
 endfunction
@@ -681,7 +681,7 @@ set guioptions-=m "get rid of menu
 "Vertical diff
 "This only work when start with gvimdiff/vimdiff
 "if &diff
-    "set diffopt=vertical
+"set diffopt=vertical
 "endif
 nnoremap diff :TMiniBufExplorer<cr>:vert diffsplit 
 
@@ -703,9 +703,9 @@ endfunction
 
 "-------------cursor in terminal----------------
 if has("autocmd")
-au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 endif
 
 "-------------move cursor under insert mode----------------
@@ -744,61 +744,61 @@ let $PATH = $PATH . '~/.vim/bin/'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "=============================FOR CSCOPE======================================
-	if has("cscope")
-		set csprg=/usr/local/bin/cscope
-		set csto=0
-		set cst
-		set nocsverb
-		" add any database in current directory
-		if filereadable("cscope.out")
-		    cs add cscope.out
-		" else add database pointed to by environment
-		elseif $CSCOPE_DB != ""
-		    cs add $CSCOPE_DB
-		endif
-		set csverb
-	endif
+if has("cscope")
+    set csprg=/usr/local/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
 
 
-	nmap s :cs find s <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-	nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-	" Using 'CTRL-spacebar' then a search type makes the vim window
-	" split horizontally, with search result displayed in
-	" the new window.
+" Using 'CTRL-spacebar' then a search type makes the vim window
+" split horizontally, with search result displayed in
+" the new window.
 
-	nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-	nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-	nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
-	" Hitting CTRL-space *twice* before the search type does a vertical
-	" split instead of a horizontal one
+" Hitting CTRL-space *twice* before the search type does a vertical
+" split instead of a horizontal one
 
-	nmap <C-Space><C-Space>s
-		\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space><C-Space>g
-		\:vert scs find g <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space><C-Space>c
-		\:vert scs find c <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space><C-Space>t
-		\:vert scs find t <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space><C-Space>e
-		\:vert scs find e <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-Space><C-Space>i
-		\:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-	nmap <C-Space><C-Space>d
-		\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>s
+            \:vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>g
+            \:vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>c
+            \:vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>t
+            \:vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>e
+            \:vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>i
+            \:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space><C-Space>d
+            \:vert scs find d <C-R>=expand("<cword>")<CR><CR>
 "=============================END CSCOPE======================================
 
 filetype plugin indent on
@@ -876,34 +876,39 @@ set background=dark
 "---------For LookUpFile------------------
 let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
 
-function! SetRootOfTheProject(path)
-   exe 'cd '.a:path
-    exe '!genfiletags&&genctagandcscope'
-    "exe '!genctagandcscope'
-   let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
+function! SetRootOfTheProject(path,project)
+    exe 'cd '.a:path
+    if project ==# 'android'
+        exe '!genAndroidFileTags&&genAndroidCtagAndCscope'
+    elseif project ==# 'general'
+        exe '!genFileTags&&genCtagAndCscope'
+    endif
+    let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
     exe "let g:LookupFile_TagExpr='\"".tagFilePath."\"'"
     "ctags and cscope--------
     set tags=$PWD/tags
 
     if filereadable("cscope.out")
         cs add cscope.out
-    " else add database pointed to by environment
+        " else add database pointed to by environment
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
     "--------
 endfunction
-function! SetHereTheRoot()
-    call SetRootOfTheProject('.')
+function! SetHereTheRoot(project)
+    call SetRootOfTheProject('.',project)
 endfunction
-nmap <leader>root :call SetHereTheRoot()<CR>
-function! SetSpecifiedPathTheRoot()
-    call SetRootOfTheProject(input('Please Input Project root path:'))
+nmap <leader>acf :call SetHereTheRoot('android')<CR>
+nmap <leader>cf :call SetHereTheRoot('general')<CR>
+function! SetSpecifiedPathTheRoot(project)
+    call SetRootOfTheProject(input('Please Input Project root path:'),project)
 endfunction
-nmap <leader>xroot :call SetSpecifiedPathTheRoot()<CR>
- 
+nmap <leader>axcf :call SetSpecifiedPathTheRoot('android')<CR>
+nmap <leader>xcf :call SetSpecifiedPathTheRoot('general')<CR>
+
 nmap <leader>o :LookupFile<CR>
 "---------For LookUpFile------------------
 
-nmap <leader>croot :!genctagandcscope
+nmap <leader>croot :!genCtagAndCscope
 

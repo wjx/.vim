@@ -1,0 +1,6 @@
+#!/bin/sh
+
+find kernel/ vendor/ frameworks/ hardware/ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.java" > cscope.files
+cscope -bkq -i cscope.files
+
+ctags -R kernel/ vendor/ frameworks/ hardware/
