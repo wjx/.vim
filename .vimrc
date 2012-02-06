@@ -707,7 +707,6 @@ au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-te
 au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 endif
-"-------------cursor in terminal----------------
 
 "-------------move cursor under insert mode----------------
 "left
@@ -738,6 +737,8 @@ augroup filetype_vim
 augroup END
 "}}}
 
+"Add .vim/bin/ into PATH
+let $PATH = $PATH . '~/.vim/bin/'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
