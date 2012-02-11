@@ -762,6 +762,8 @@ if has("cscope")
     set csverb
 endif
 
+"map :cstag
+nnoremap <leader>ta :cstag 
 
 nmap s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>

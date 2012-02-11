@@ -1,5 +1,5 @@
 My personal vim environment.
-Continueously updated.
+Plugins should reside in there own repo under .vim/bundle and managed by script Pathogen,they are put together here just for convenience of the whole env sync.
 Plugins belongs to the author.
 .vimrc originates from amix the lucky stiff,http://amix.dk
 
