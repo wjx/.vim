@@ -185,13 +185,13 @@ if has("gui_running")
     set t_Co=256
     set background=dark
     "colorscheme blue
-    "colorscheme delek
+    colorscheme delek
     "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
     "colorscheme desert
-    colorscheme koehler
+    "colorscheme koehler
     "colorscheme pablo
     "colorscheme ron
     "colorscheme torte
@@ -219,7 +219,7 @@ else
     "colorscheme morning
     "colorscheme peachpuff
     "colorscheme shine
-    "colorscheme zellner
+    colorscheme zellner
     set background=light
     set t_Co=256
     set nonu
@@ -512,7 +512,7 @@ set guitablabel=%t
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>cc :botright cope<cr>
+"map <leader>cc :botright cope<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
@@ -742,6 +742,9 @@ augroup addPATH
     au!
     au VimEnter * let $PATH = $PATH . ':~/.vim/bin/'
 augroup END
+
+nnoremap <leader>f /<c-r>"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

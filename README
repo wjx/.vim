@@ -1,9 +1,9 @@
 My personal vim environment.
-Plugins should reside in there own repo under .vim/bundle and managed by script Pathogen,they are put together here just for convenience of the whole env sync.
+Plugins should be placed in there own repo under .vim/bundle and managed by script Pathogen,they are put together here just for convenience of the whole env sync.
 Plugins belongs to the author.
 .vimrc originates from amix the lucky stiff,http://amix.dk
 
 Installation
 1. for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old; done
-2. git clone git://github.com/wjx/.vimrc.git ~/.vim
+2. git clone git://github.com/wjx/.vim.git ~/.vim
 3. ln -s ~/.vim/.vimrc ~/.vimrc
