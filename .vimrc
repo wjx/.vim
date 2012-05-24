@@ -710,13 +710,13 @@ endif
 
 "-------------move cursor under insert mode----------------
 "left
-inoremap <C-h> <ESC>i
+inoremap <silent> <C-h> <ESC>i
 "down
-inoremap <C-j> <ESC>jli
+inoremap <silent> <C-j> <ESC>jli
 "up
-inoremap <C-k> <ESC>kli
+inoremap <silent> <C-k> <ESC>kli
 "right
-inoremap <C-l> <ESC>lli
+inoremap <silent> <C-l> <ESC>la
 
 "Fast back to NORMAL from INSERT mode
 inoremap jk <ESC>
