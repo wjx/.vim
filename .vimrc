@@ -116,7 +116,10 @@ nmap <leader>w :w!<cr>
 
 " When vimrc is edited, reload it
 "autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
-autocmd! bufwritepost vimrc source ~/.vimrc
+augroup sourcevimrc
+    au!
+    autocmd! bufwritepost vimrc source ~/.vimrc
+augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -503,7 +506,10 @@ func! DeleteTrailingWS()
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+augroup writepy
+    au!
+    autocmd BufWrite *.py :call DeleteTrailingWS()
+augroup END
 
 set guitablabel=%t
 
@@ -538,7 +544,10 @@ let g:miniBufExplSplitBelow=1
 
 let g:bufExplorerSortBy = "name"
 
-autocmd BufRead,BufNew :call UMiniBufExplorer
+augroup uminibufexplorer
+    au!
+    autocmd BufRead,BufNew :call UMiniBufExplorer
+augroup END
 
 map <leader>u :TMiniBufExplorer<cr>
 
