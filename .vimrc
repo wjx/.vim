@@ -712,6 +712,9 @@ nnoremap <silent> se     :FufEditDataFile<CR>
 nnoremap <silent> sr     :FufRenewCache<CR>
 "=============================FOR Fuf======================================
 "}}}
+
+"For MultipleSearch
+let g:MultipleSearchMaxColors = 50
 "}}}
 
 " => Omni complete functions"{{{
