@@ -209,11 +209,11 @@ if has("gui_running")
 else
     "colorscheme blue
     "colorscheme delek
-    colorscheme evening
+    "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
-    "colorscheme desert
+    colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
     "colorscheme ron
@@ -224,7 +224,7 @@ else
     "colorscheme peachpuff
     "colorscheme shine
     "colorscheme zellner
-    set background=light
+    set background=dark
     set t_Co=256
     set nonu
 endif
@@ -907,6 +907,19 @@ command! Calh CalendarH
 
 set background=dark
 
+"Operator Y/P,yank text into system clipboard
+nnoremap Y :set operatorfunc=<SID>YOperator<cr>g@
+vnoremap Y :<c-u>call <SID>YOperator(visualmode())<cr>
+function! s:YOperator(type)
+    if a:type ==# 'v'
+        normal! `<v`>"+y
+    elseif a:type ==# 'char'
+        normal! `[v`]"+y
+    else
+        return
+    endif
+endfunction
+nnoremap P "+p
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
