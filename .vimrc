@@ -563,6 +563,46 @@ noremap <leader>y :CommandTFlush<cr>
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 set grepprg=/bin/grep\ -nH
 
+"---------For LookUpFile------------------
+let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
+
+function! SetRootOfTheProject(path,project)
+    exe 'cd '.a:path
+    if a:project ==# 'android'
+        exe '!genAndroidFileTags&&genAndroidCtagAndCscope'
+    elseif a:project ==# 'general'
+        exe '!genFileTags&&genCtagAndCscope'
+    endif
+    let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
+    exe "let g:LookupFile_TagExpr='\"".tagFilePath."\"'"
+    "ctags and cscope--------
+    set tags=$PWD/tags
+
+    if filereadable("cscope.out")
+        cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    "--------
+endfunction
+function! SetHereTheRoot(project)
+    call SetRootOfTheProject('.',a:project)
+endfunction
+nmap <leader>acf :call SetHereTheRoot('android')<CR>
+nmap <leader>cf :call SetHereTheRoot('general')<CR>
+
+function! SetSpecifiedPathTheRoot(project)
+    call SetRootOfTheProject(input('Please Input Project root path:'),project)
+endfunction
+nmap <leader>axcf :call SetSpecifiedPathTheRoot('android')<CR>
+nmap <leader>xcf :call SetSpecifiedPathTheRoot('general')<CR>
+
+nmap <leader>o :LookupFile<CR>
+"---------For LookUpFile------------------
+
+nmap <leader>croot :!genCtagAndCscope
+
 "=============================FOR CSCOPE======================================"{{{
 if has("cscope")
     set csprg=/usr/local/bin/cscope
@@ -867,45 +907,6 @@ command! Calh CalendarH
 
 set background=dark
 
-"---------For LookUpFile------------------
-let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
-
-function! SetRootOfTheProject(path,project)
-    exe 'cd '.a:path
-    if a:project ==# 'android'
-        exe '!genAndroidFileTags&&genAndroidCtagAndCscope'
-    elseif a:project ==# 'general'
-        exe '!genFileTags&&genCtagAndCscope'
-    endif
-    let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
-    exe "let g:LookupFile_TagExpr='\"".tagFilePath."\"'"
-    "ctags and cscope--------
-    set tags=$PWD/tags
-
-    if filereadable("cscope.out")
-        cs add cscope.out
-        " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    "--------
-endfunction
-function! SetHereTheRoot(project)
-    call SetRootOfTheProject('.',a:project)
-endfunction
-nmap <leader>acf :call SetHereTheRoot('android')<CR>
-nmap <leader>cf :call SetHereTheRoot('general')<CR>
-
-function! SetSpecifiedPathTheRoot(project)
-    call SetRootOfTheProject(input('Please Input Project root path:'),project)
-endfunction
-nmap <leader>axcf :call SetSpecifiedPathTheRoot('android')<CR>
-nmap <leader>xcf :call SetSpecifiedPathTheRoot('general')<CR>
-
-nmap <leader>o :LookupFile<CR>
-"---------For LookUpFile------------------
-
-nmap <leader>croot :!genCtagAndCscope
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
