@@ -209,7 +209,7 @@ if has("gui_running")
 else
     "colorscheme blue
     "colorscheme delek
-    "colorscheme evening
+    colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
@@ -223,7 +223,7 @@ else
     "colorscheme morning
     "colorscheme peachpuff
     "colorscheme shine
-    colorscheme zellner
+    "colorscheme zellner
     set background=light
     set t_Co=256
     set nonu
