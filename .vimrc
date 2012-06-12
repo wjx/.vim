@@ -205,6 +205,7 @@ if has("gui_running")
     "colorscheme peachpuff
     "colorscheme shine
     "colorscheme zellner
+    colorscheme aqua
     set nonu
 else
     "colorscheme blue
@@ -213,7 +214,7 @@ else
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
-    colorscheme desert
+    "colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
     "colorscheme ron
@@ -224,6 +225,7 @@ else
     "colorscheme peachpuff
     "colorscheme shine
     "colorscheme zellner
+    colorscheme aqua
     set background=dark
     set t_Co=256
     set nonu
