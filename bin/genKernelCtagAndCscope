@@ -1,0 +1,6 @@
+#!/bin/sh
+
+find arch/i386/ arch/x86/ fs/ ipc/ net/ Documentation/ include/ kernel/ scripts/ drivers/ init/ lib/ mm/ block/ security/ tools/ firmware/ mm/ sound/ usr/ virt/ crypto/ samples/ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.java" -o -name "*.S"> cscope.files
+cscope -bkq -i cscope.files
+
+ctags -R arch/i386/ arch/x86/ fs/ ipc/ net/ Documentation/ include/ kernel/ scripts/ drivers/ init/ lib/ mm/ block/ security/ tools/ firmware/ mm/ sound/ usr/ virt/ crypto/ samples/ 

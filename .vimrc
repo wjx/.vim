@@ -574,6 +574,8 @@ function! SetRootOfTheProject(path,project)
         exe '!genAndroidFileTags&&genAndroidCtagAndCscope'
     elseif a:project ==# 'general'
         exe '!genFileTags&&genCtagAndCscope'
+    elseif a:project ==# 'kernel'
+        exe '!genFileTags&&genKernelCtagAndCscope'
     endif
     let tagFilePath = genutils#CleanupFileName(a:path.'/tagsForLookUpFile')
     exe "let g:LookupFile_TagExpr='\"".tagFilePath."\"'"
@@ -593,6 +595,7 @@ function! SetHereTheRoot(project)
 endfunction
 nmap <leader>acf :call SetHereTheRoot('android')<CR>
 nmap <leader>cf :call SetHereTheRoot('general')<CR>
+nmap <leader>kcf :call SetHereTheRoot('kernel')<CR>
 
 function! SetSpecifiedPathTheRoot(project)
     call SetRootOfTheProject(input('Please Input Project root path:'),project)
