@@ -5,6 +5,7 @@ vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
 nnoremap <leader>gp :set operatorfunc=<SID>GrepOperatorWithInput<cr>g@
 vnoremap <leader>gp :<c-u>call <SID>GrepOperatorWithInput(visualmode())<cr>
 nnoremap <leader>gr :call <SID>EasyGrep()<cr>
+nnoremap <leader>ef :call <SID>EasyFind()<cr>
 
 function! s:EasyGrep()
     
@@ -15,6 +16,31 @@ function! s:EasyGrep()
     endif
 
     silent execute "grep! -rsw " . l:patterntogrep . " " . l:pathtogrep
+
+    if g:quickfix_is_open
+        botright cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        botright copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+function! s:EasyFind()
+    
+    let l:filetofind = input('Input file to find:')
+    let l:path = input('Input path to find:')
+    if l:filetofind ==# ''
+        echo "You need to input a file to find!"
+        return
+    endif
+    if l:path ==# ''
+        let l:path = '.'
+    endif
+
+    execute "!find " . l:path . " -name " . l:filetofind
 
     if g:quickfix_is_open
         botright cclose
