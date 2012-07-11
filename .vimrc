@@ -97,6 +97,8 @@ set history=700
 filetype plugin on
 filetype indent on
 
+set cursorline
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
