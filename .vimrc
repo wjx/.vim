@@ -919,14 +919,17 @@ set background=dark
 
 "Operator Y/P,yank text into system clipboard
 nnoremap Y :set operatorfunc=<SID>YOperator<cr>g@
-vnoremap Y :<c-u>call <SID>YOperator(visualmode())<cr>
-function! s:YOperator(type)
-    if a:type ==# 'v'
-        normal! `<v`>"+y
-    elseif a:type ==# 'char'
-        normal! `[v`]"+y
+vnoremap Y :<c-u>call <SID>YOperator(visualmode(), 1)<cr>
+function! s:YOperator(type, ...)
+    echom a:type
+    if a:0  " Invoked from Visual mode, use '< and '> marks.
+        silent exe "normal! `<" . a:type . "`>\"+y"
+    elseif a:type == 'line'
+        silent exe "normal! '[V']\"+y"
+    elseif a:type == 'block'
+        silent exe "normal! `[\<C-V>`]\"+y"
     else
-        return
+        silent exe "normal! `[v`]\"+y"
     endif
 endfunction
 nnoremap P "+p
