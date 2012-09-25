@@ -935,6 +935,11 @@ function! s:YOperator(type, ...)
     endif
 endfunction
 nnoremap P "+p
+
+"Go back to the start of visual selection and Search in it
+"^_ == <C-/> in gnome-terminal
+vnoremap  <esc>`</\%V
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
