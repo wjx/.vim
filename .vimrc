@@ -860,13 +860,17 @@ endif
 
 "-------------move cursor under insert mode----------------
 "left
-inoremap <silent> <C-h> <ESC>i
+inoremap <silent> <C-h> <Left>
 "down
-inoremap <silent> <C-j> <ESC>jli
+inoremap <silent> <C-j> <Down>
 "up
-inoremap <silent> <C-k> <ESC>kli
+inoremap <silent> <C-k> <Up>
 "right
-inoremap <silent> <C-l> <ESC>la
+inoremap <silent> <C-l> <Right>
+
+"<BS> and <Delete>
+inoremap <silent> <C-z> <BS>
+inoremap <silent> <C-x> <Delete>
 
 "Fast back to NORMAL from INSERT mode,and write file
 inoremap jk <ESC>:w!<cr>
@@ -935,6 +939,10 @@ function! s:YOperator(type, ...)
     endif
 endfunction
 nnoremap P "+p
+
+"Go back to the start of visual selection and Search in it
+"^_ == <C-/> in gnome-terminal
+vnoremap  <esc>`</\%V
 
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 

@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/wjx/Desktop/bak/brother/brhl2140lpr-2.0.2-1.i386'
-let g:netrw_dirhist_2='/home/wjx/bin/chromium-browser-23.0.1271.97/src/third_party'
-let g:netrw_dirhist_3='/home/wjx/bin/chromium-browser-23.0.1271.97/src/build'
-let g:netrw_dirhist_4='/home/wjx/bin/chromium-browser-23.0.1271.97/src/third_party'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/etc'
+let g:netrw_dirhist_2='/usr/share/espeak-data/voices/en'
+let g:netrw_dirhist_3='/host/LINUX/source_codes/espeak-1.46.02-source/docs'
+let g:netrw_dirhist_4='/home/wjx/nfs'
+let g:netrw_dirhist_5='/usr/share/espeak-data/voices/en'
+let g:netrw_dirhist_6='/host/LINUX/source_codes/mediatomb-0.12.1/src/storage'
+let g:netrw_dirhist_7='/host/LINUX/source_codes/mediatomb-0.12.1/scripts'
