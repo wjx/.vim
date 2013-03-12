@@ -214,7 +214,7 @@ if has("gui_running")
 else
     "colorscheme blue
     "colorscheme delek
-    "colorscheme evening
+    colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
@@ -229,7 +229,7 @@ else
     "colorscheme peachpuff
     "colorscheme shine
     "colorscheme zellner
-    colorscheme aqua
+    "colorscheme aqua
     set background=dark
     set t_Co=256
     set nonu
@@ -939,3 +939,5 @@ nnoremap P "+p
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "}}}
+"
+set fileencodings=utf-8,gbk,ucs-bom,cp936
