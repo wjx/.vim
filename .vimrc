@@ -935,9 +935,12 @@ function! s:YOperator(type, ...)
     endif
 endfunction
 nnoremap P "+p
+
+set fileencodings=utf-8,gbk,ucs-bom,cp936
+
+execute pathogen#infect()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "}}}
 "
-set fileencodings=utf-8,gbk,ucs-bom,cp936
