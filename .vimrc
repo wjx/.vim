@@ -614,7 +614,7 @@ nmap <leader>croot :!genCtagAndCscope
 
 "=============================FOR CSCOPE======================================"{{{
 if has("cscope")
-    set csprg=/usr/local/bin/cscope
+    set csprg=/usr/bin/cscope
     set csto=0
     set cst
     set nocsverb
