@@ -192,13 +192,13 @@ if has("gui_running")
     set guioptions-=T
     set t_Co=256
     set background=dark
-    "colorscheme blue
+    colorscheme blue
     "colorscheme delek
     "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
-    colorscheme desert
+    "colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
     "colorscheme ron
@@ -209,15 +209,15 @@ if has("gui_running")
     "colorscheme peachpuff
     "colorscheme shine
     "colorscheme zellner
-    colorscheme aqua
+    "colorscheme aqua
     set nonu
 else
     "colorscheme blue
     "colorscheme delek
-    colorscheme evening
+    "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
-    "colorscheme darkblue
+    colorscheme darkblue
     "colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
