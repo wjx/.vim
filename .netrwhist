@@ -1,7 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/wjx/src/ldd3-samples/misc-modules'
-let g:netrw_dirhist_2='/etc/udev'
-let g:netrw_dirhist_3='/home/wjx/src/linux-3.8.8/Documentation'
-let g:netrw_dirhist_4='/home/wjx/tmp'
-let g:netrw_dirhist_5='/home/wjx/src/acorn-annotated/test'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/wjx/tmp'
+let g:netrw_dirhist_2='/home/wjx/src/chrome-app-samples-master/context-menu'
