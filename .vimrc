@@ -211,14 +211,14 @@ if has("gui_running")
     "colorscheme aqua
     set nonu
 else
-    "colorscheme blue
+    colorscheme blue
     "colorscheme delek
     "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
     "colorscheme darkblue
     "colorscheme desert
-    colorscheme koehler
+    "colorscheme koehler
     "colorscheme pablo
     "colorscheme ron
     "colorscheme torte
@@ -376,6 +376,10 @@ endfunc
 map <space> /
 map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
+
+"-------------walk through buffer-----------------------
+nnoremap <silent> <down> :bn<cr>
+nnoremap <silent> <C-k> :bp<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -830,10 +834,6 @@ inoremap <silent> <C-x> <Delete>
 
 "Fast back to NORMAL from INSERT mode,and write file
 inoremap jk <ESC>:w!<cr>
-
-"-------------walk through buffer-----------------------
-nnoremap <silent> <C-j> :bn<cr>
-nnoremap <silent> <C-k> :bp<cr>
 
 "Move faster
 "nnoremap ch 4h
