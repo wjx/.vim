@@ -331,9 +331,6 @@ map <silent> <leader><cr> :noh<cr>
 nnoremap <silent> <down> :bn<cr>
 nnoremap <silent> <C-k> :bp<cr>
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
 
@@ -349,27 +346,6 @@ map <leader>tm :tabmove
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
-
-
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
 
 " Specify the behavior when switching between buffers 
 try
