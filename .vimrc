@@ -218,10 +218,6 @@ map <space> /
 map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
-"-------------walk through buffer-----------------------
-nnoremap <silent> <down> :bn<cr>
-nnoremap <silent> <C-k> :bp<cr>
-
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
 
@@ -495,9 +491,6 @@ set nu
 
 set tags=$PWD/tags
 
-nmap <F8> :NERDTreeToggle
-"nmap <F6> :e ~/.vimrc
-
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 "Fast edit .vimrc
@@ -547,9 +540,13 @@ inoremap <silent> <C-h> <Left>
 "down
 inoremap <silent> <C-j> <Down>
 "up
-"inoremap <silent> <C-k> <Up>
+inoremap <silent> <C-k> <Up>
 "right
 inoremap <silent> <C-l> <Right>
+
+"-------------walk through buffer-----------------------
+nnoremap <silent> <C-j> :bn<cr>
+nnoremap <silent> <C-k> :bp<cr>
 
 "<BS> and <Delete>
 inoremap <silent> <C-z> <BS>
