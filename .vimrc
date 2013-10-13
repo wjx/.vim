@@ -496,25 +496,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-"Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-au BufRead,BufNewFile ~/buffer iab <buffer> xh1 ===========================================
-
-map <leader>pp :setlocal paste!<cr>
-
-map <leader>bb :cd ..<cr>
-
 set nu
-
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-
-"let g:winManagerWindowLayout='FileExplorer|TagList'
-let g:winManagerWindowLayout='TagList'
-let g:winManagerWidth=18
-nmap wm :WMToggle
-"nmap <silent> <F8> :WMToggle<cr>
-let g:AutoOpenWinManager=1
 
 set tags=$PWD/tags
 
