@@ -17,6 +17,8 @@ set cursorline
 " Set to auto read when a file is changed from the outside
 set autoread
 
+set noswapfile
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -150,26 +152,6 @@ catch
 endtry
 
 set ffs=unix,dos,mac "Default file types
-"}}}
-
-" => Files, backups and undo"{{{
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git anyway...
-set nobackup
-set nowb
-set noswapfile
-
-"Persistent undo
-try
-    if MySys() == "windows"
-        set undodir=C:\Windows\Temp
-    else
-        set undodir=~/.vim_runtime/undodir
-    endif
-
-    set undofile
-catch
-endtry
 "}}}
 
 " => Text, tab and indent related"{{{
