@@ -117,12 +117,12 @@ if has("gui_running")
     "colorscheme aqua
     set nonu
 else
-    colorscheme blue
+    "colorscheme blue
     "colorscheme delek
     "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
-    "colorscheme darkblue
+    colorscheme darkblue
     "colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
@@ -547,7 +547,7 @@ inoremap <silent> <C-h> <Left>
 "down
 inoremap <silent> <C-j> <Down>
 "up
-inoremap <silent> <C-k> <Up>
+"inoremap <silent> <C-k> <Up>
 "right
 inoremap <silent> <C-l> <Right>
 
