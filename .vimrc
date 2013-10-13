@@ -344,22 +344,6 @@ augroup END
 map <leader>u :TMiniBufExplorer<cr>
 
 """"""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => Command-T
-""""""""""""""""""""""""""""""
-let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
-noremap <leader>j :CommandT<cr>
-noremap <leader>y :CommandTFlush<cr>
-
-
-""""""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
@@ -614,12 +598,6 @@ inoremap <silent> <C-x> <Delete>
 
 "Fast back to NORMAL from INSERT mode,and write file
 inoremap jk <ESC>:w!<cr>
-
-"Move faster
-"nnoremap ch 4h
-"nnoremap cj 4j
-"nnoremap ck 4k
-"nnoremap cl 4l
 
 "Fast grep
 "nnoremap <leader>g :silent execute "grep! -rsw " . shellescape("<cword>") . " ./"<cr>:copen<cr>
