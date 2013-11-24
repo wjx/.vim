@@ -135,9 +135,9 @@ else
     "colorscheme shine
     "colorscheme zellner
     "colorscheme aqua
+    colorscheme molokai
     set background=dark
     set t_Co=256
-    "set nonu
 endif
 
 set encoding=utf8
