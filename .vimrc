@@ -122,7 +122,7 @@ else
     "colorscheme evening
     "colorscheme murphy
     "colorscheme slate
-    colorscheme darkblue
+    "colorscheme darkblue
     "colorscheme desert
     "colorscheme koehler
     "colorscheme pablo
