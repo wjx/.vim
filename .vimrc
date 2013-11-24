@@ -137,7 +137,7 @@ else
     "colorscheme aqua
     set background=dark
     set t_Co=256
-    set nonu
+    "set nonu
 endif
 
 set encoding=utf8
@@ -321,6 +321,8 @@ map <leader>u :TMiniBufExplorer<cr>
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 set grepprg=/bin/grep\ -nH
+map <leader>b :Bgrep<cr>
+map <leader>r :Rgrep<cr>
 
 "---------For LookUpFile------------------
 let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
@@ -621,6 +623,10 @@ vnoremap  <esc>`</\%V
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 
 execute pathogen#infect()
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+let g:ctrlp_max_files = 1000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
