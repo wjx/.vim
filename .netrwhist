@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/wjx/tmp'
-let g:netrw_dirhist_2='/home/wjx/src/chrome-app-samples-master/context-menu'
-let g:netrw_dirhist_3='/home/wjx/src'
-let g:netrw_dirhist_4='/home/wjx/src/linux-3.8.8'
-let g:netrw_dirhist_5='/home/wjx/src/ldd3-samples/scull'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/wjx/src/linux/kernel/trace'
+let g:netrw_dirhist_2='/home/wjx/src/gcc-4.8.2/gcc'
+let g:netrw_dirhist_3='/home/wjx/src/gcc-4.8.2/gcc/config'
+let g:netrw_dirhist_4='/home/wjx/src/gcc-4.8.2/gcc/config/i386'
+let g:netrw_dirhist_5='/home/wjx/src/scratch/ftrace'
+let g:netrw_dirhist_6='/home/wjx/Ubuntu One/bin/google_appengine/goagent/server/python'
