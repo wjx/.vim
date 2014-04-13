@@ -223,10 +223,6 @@ map <silent> <leader><cr> :noh<cr>
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
 
-" Use the arrows to something usefull
-map <right> :bn<cr>
-map <left> :bp<cr>
-
 " Tab configuration
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
