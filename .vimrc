@@ -151,15 +151,8 @@ endtry
 set ffs=unix,dos,mac "Default file types
 "}}}
 
-" => Text, tab and indent related"{{{
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set smarttab
-
 set lbr
-set tw=500
+set tw=80
 
 set ai "Auto indent
 set si "Smart indet
@@ -217,7 +210,7 @@ cno $v e ~/.vim/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map space to / (search) and c-space to ? (backgwards search)
 map <space> /
-map <c-space> ?
+map <S-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Close all the buffers
