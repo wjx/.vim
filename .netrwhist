@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/wjx/src/scratch/ftrace/logs'
-let g:netrw_dirhist_2='/home/wjx/src/scratch/ftrace'
-let g:netrw_dirhist_3='/home/wjx/src/scratch/ftrace/logs'
-let g:netrw_dirhist_4='/home/wjx/src/ubuntu-14.04-startup-sounds'
-let g:netrw_dirhist_5='/home/wjx/src/linux-annotated'
-let g:netrw_dirhist_6='/home/wjx/src/linux/wjx'
-let g:netrw_dirhist_7='/home/wjx/src/linux/wjx/ftrace'
-let g:netrw_dirhist_8='/home/wjx/src/ubuntu-14.04-startup-sounds'
-let g:netrw_dirhist_9='/home/wjx/src/kpatch/kpatch-build'
+let g:netrw_dirhist_cnt =0

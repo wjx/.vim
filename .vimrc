@@ -483,6 +483,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 set nu
 
 set tags=$PWD/tags
+set csto=1
 
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 
@@ -618,6 +619,22 @@ execute pathogen#infect()
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ctrlp_max_files = 1000
+
+"Search current c function in current file
+nnoremap 8 :call CurrentFunc("j")<cr>
+nnoremap 3 :call CurrentFunc("k")<cr>
+func! CurrentFunc(key)
+	"set mark at original position
+	exec "normal mo"
+	exec "normal ][%b%b"
+	exec "normal \"syw"
+	let @/ = @s
+	if a:key == 'j'
+		exec "normal *" 
+	elseif a:key == 'k'
+		exec "normal #"
+	endif
+endfunc " CurrentFunc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
