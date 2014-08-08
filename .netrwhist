@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/media/wjx/d898661c-e8cd-4ebb-821c-c168aaed9c22/home/wjx/src/linux/drivers/gpu/drm/nouveau'
 let g:netrw_dirhist_2='/media/wjx/d898661c-e8cd-4ebb-821c-c168aaed9c22/home/wjx/src/kpatch/kpatch-build'
 let g:netrw_dirhist_3='/home/wjx/.oh-my-zsh/plugins/git'
 let g:netrw_dirhist_4='/media/wjx/d898661c-e8cd-4ebb-821c-c168aaed9c22/home/wjx/src/kpatch/kpatch-build'
 let g:netrw_dirhist_5='/opt/Aquaria/scripts/vox'
 let g:netrw_dirhist_6='/media/wjx/d898661c-e8cd-4ebb-821c-c168aaed9c22/home/wjx/src/linux/drivers/gpu/drm'
+let g:netrw_dirhist_7='/media/sda9/wjx/src/linux/drivers/thermal'
+let g:netrw_dirhist_8='/etc/samba'
