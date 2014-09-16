@@ -512,7 +512,7 @@ if has("autocmd")
     au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 endif
 
-"-------------move cursor under insert mode----------------
+"-------------move cursor----------------
 "left
 inoremap <silent> <C-h> <Left>
 "down
@@ -521,6 +521,12 @@ inoremap <silent> <C-j> <Down>
 inoremap <silent> <C-k> <Up>
 "right
 inoremap <silent> <C-l> <Right>
+
+"-----------command mode---------------
+"left
+cnoremap <C-h> <Left>
+"right
+cnoremap <C-l> <Right>
 
 "-------------walk through buffer-----------------------
 nnoremap <silent> <C-j> :bn<cr>
