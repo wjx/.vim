@@ -209,7 +209,6 @@ cno $v e ~/.vim/
 " => Moving around, tabs and buffers"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
 map <S-space> ?
 map <silent> <leader><cr> :noh<cr>
 
@@ -449,6 +448,12 @@ nnoremap <silent> sr     :FufRenewCache<CR>
 let g:MultipleSearchMaxColors = 50
 "}}}
 
+"For easymotion
+map ; <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s)
+map  <space> <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
 " => Omni complete functions"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -601,8 +606,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_files = 1000
 
 "Search current c function in current file
-nnoremap 8 :call CurrentFunc("j")<cr>
-nnoremap 3 :call CurrentFunc("k")<cr>
+nnoremap <leader>8 :call CurrentFunc("j")<cr>
+nnoremap <leader>3 :call CurrentFunc("k")<cr>
 func! CurrentFunc(key)
 	"set mark at original position
 	exec "normal mo"
