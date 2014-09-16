@@ -449,7 +449,7 @@ let g:MultipleSearchMaxColors = 50
 "}}}
 
 "For easymotion
-map ; <Plug>(easymotion-prefix)
+map \ <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 map  <space> <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
