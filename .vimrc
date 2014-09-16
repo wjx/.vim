@@ -630,6 +630,9 @@ func! CurrentFunc(key)
 		exec "normal #"
 	endif
 endfunc " CurrentFunc
+
+"disable netrw from generating .netrwhist
+let g:netrw_dirhistmax = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

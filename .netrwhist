@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/media/sda9/wjx/src/wine-1.7.24/dlls/ntdll'
-let g:netrw_dirhist_2='/media/sda9/wjx/src/wine-git/scratch/doc'
