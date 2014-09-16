@@ -528,6 +528,10 @@ cnoremap <C-h> <Left>
 "right
 cnoremap <C-l> <Right>
 
+cnoremap <C-A> <Home>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
 "-------------walk through buffer-----------------------
 nnoremap <silent> <C-j> :bn<cr>
 nnoremap <silent> <C-k> :bp<cr>
