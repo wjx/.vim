@@ -633,6 +633,17 @@ endfunc " CurrentFunc
 
 "disable netrw from generating .netrwhist
 let g:netrw_dirhistmax = 0
+
+"highlight a line
+" define a highlight colour group for bookmarks
+hi default BookmarkCol ctermfg=blue ctermbg=lightblue cterm=bold guifg=DarkBlue guibg=#d0d0ff gui=bold
+" define a bookmark / sign: just highlight the line
+sign define MyBookmark linehl=BookmarkCol
+" add something to the context menue (right mouse)
+amenu 1.200 PopUp.-SEP3- :
+amenu 1.200 PopUp.&mark.set\ bookmark :exe 'sign place 1000 name=MyBookmark line='.line(".").' buffer='.winbufnr(0)<CR>
+amenu 1.200 PopUp.&mark.del\ bookmarks :sign unplace 1000 <CR>
+amenu 1.200 PopUp.&mark.list\ bookmarks :sign list<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
