@@ -454,6 +454,9 @@ nmap s <Plug>(easymotion-s)
 map  <space> <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
+"showmarks.vim
+let g:showmarks_enable=0
+
 " => Omni complete functions"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
