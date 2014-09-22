@@ -461,9 +461,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " => MISC"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 set nu
 
 set tags=$PWD/tags
@@ -635,15 +632,9 @@ endfunc " CurrentFunc
 let g:netrw_dirhistmax = 0
 
 "highlight a line
-" define a highlight colour group for bookmarks
-hi default BookmarkCol ctermfg=blue ctermbg=lightblue cterm=bold guifg=DarkBlue guibg=#d0d0ff gui=bold
-" define a bookmark / sign: just highlight the line
-sign define MyBookmark linehl=BookmarkCol
-" add something to the context menue (right mouse)
-amenu 1.200 PopUp.-SEP3- :
-amenu 1.200 PopUp.&mark.set\ bookmark :exe 'sign place 1000 name=MyBookmark line='.line(".").' buffer='.winbufnr(0)<CR>
-amenu 1.200 PopUp.&mark.del\ bookmarks :sign unplace 1000 <CR>
-amenu 1.200 PopUp.&mark.list\ bookmarks :sign list<CR>
+sign define bookmark linehl=DiffDelete
+nnoremap <leader>u :exe 'sign unplace '.line(".")<CR>
+nnoremap <leader>m :exe 'sign place '.line(".").' name=bookmark line='.line(".").' buffer='.winbufnr(0)<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
