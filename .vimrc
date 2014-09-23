@@ -472,8 +472,8 @@ set csto=1
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 "Fast edit .vimrc
-nmap <F6> :e ~/.vimrc
-map <F7> :so ~/.vimrc
+nmap <F6> :e ~/.vimrc<CR>
+map <F7> :so ~/.vimrc<CR>
 
 "This doesn't work at line106 while works here,why???
 " Fast saving
