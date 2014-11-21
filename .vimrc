@@ -21,12 +21,6 @@ set modeline
 let mapleader = ","
 let g:mapleader = ","
 
-"see line837
-" Fast saving
-nmap <leader>w :w!<cr>
-
-"TELL ME: why these don't work here,but work below?
-
 " When vimrc is edited, reload it
 "autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
 augroup sourcevimrc
@@ -74,26 +68,10 @@ set tm=500
 
 " => Colors and Fonts"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Configure System type
-function! MySys() 
-    return "linux" 
-endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 syntax enable "Enable syntax hl
 
-" Set font according to system
-if MySys() == "mac"
-    set gfn=Menlo:h14
-    set shell=/bin/bash
-elseif MySys() == "windows"
-    set gfn=Bitstream\ Vera\ Sans\ Mono:h10
-elseif MySys() == "linux"
-    set gfn=Monospace\ 12
-    set shell=/bin/bash
-endif
+set gfn=Monospace\ 12
+set shell=/bin/bash
 
 if has("gui_running")
     set guioptions-=T
@@ -143,11 +121,6 @@ else
 endif
 
 set encoding=utf8
-try
-    lang en_US
-catch
-endtry
-
 set ffs=unix,dos,mac "Default file types
 "}}}
 
@@ -212,9 +185,6 @@ cno $v e ~/.vim/
 map <S-space> ?
 map <silent> <leader><cr> :noh<cr>
 
-" Close all the buffers
-map <leader>ba :1,300 bd!<cr>
-
 " Tab configuration
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
@@ -223,13 +193,6 @@ map <leader>tm :tabmove
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers 
-try
-    set switchbuf=usetab
-    set stal=2
-catch
-endtry
 "}}}
 
 " => Statusline"{{{
@@ -279,12 +242,6 @@ map <leader>p :cp<cr>
 "}}}
 
 """"Plugins"""""""""""""""""""""{{{
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-map <leader>o :BufExplorer<cr>
-
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
@@ -475,19 +432,11 @@ set csto=1
 nmap <F6> :e ~/.vimrc<CR>
 map <F7> :so ~/.vimrc<CR>
 
-"This doesn't work at line106 while works here,why???
 " Fast saving
 nmap <leader>w :w!<cr>
 
 set guioptions-=T "get rid of toolbar
 set guioptions-=m "get rid of menu
-
-"Vertical diff
-"This only work when start with gvimdiff/vimdiff
-"if &diff
-"set diffopt=vertical
-"endif
-nnoremap diff :TMiniBufExplorer<cr>:vert diffsplit 
 
 "Toggle quickfix
 nnoremap <silent> <c-x> :call QuickfixToggle()<cr>
@@ -504,13 +453,6 @@ function! QuickfixToggle()
         let g:quickfix_is_open = 1
     endif
 endfunction
-
-"-------------cursor in terminal----------------
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-endif
 
 "-------------move cursor----------------
 "left
@@ -564,24 +506,8 @@ augroup END
 "}}}
 nnoremap <leader>f /<c-r>"
 
-"   Edit another file in the same directory as the current file
-"   uses expression to extract path from current file's path
-"  (thanks Douglas Potts)
-if has("unix")
-    map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
-else
-    map ,e :e <C-R>=expand("%:p:h") . "\" <CR>
-endif
-
-"Shift+L/R Mouse to search a word
-set mousemodel=extend
-
 "For clipboard
 set clipboard=unnamed
-
-"calendar
-command! Cal Calendar
-command! Calh CalendarH
 
 set background=dark
 
