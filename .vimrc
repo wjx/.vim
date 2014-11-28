@@ -187,7 +187,7 @@ map <silent> <leader><cr> :noh<cr>
 
 " Tab configuration
 map <leader>tn :tabnew<cr>
-map <leader>te :tabedit
+map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
