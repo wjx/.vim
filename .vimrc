@@ -414,6 +414,18 @@ omap / <Plug>(easymotion-tn)
 "showmarks.vim
 let g:showmarks_enable=0
 
+"ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = {
+\ 'file': '\v(\.so|\.o|\.mod\.c|\.mod\.o|\.ko)$'
+\ }
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_extensions = ['buffertag']
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <C-l> :CtrlP <C-R>=expand("%:p:h")<CR><CR>
+
 " => Omni complete functions"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -536,10 +548,6 @@ vnoremap  <esc>`</\%V
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 
 execute pathogen#infect()
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-let g:ctrlp_max_files = 1000
 
 "Search current c function in current file
 nnoremap <leader>8 :call CurrentFunc("j")<cr>
