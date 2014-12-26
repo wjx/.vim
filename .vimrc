@@ -574,7 +574,7 @@ nnoremap <leader>u :exe 'sign unplace '.line(".")<CR>
 nnoremap <leader>m :exe 'sign place '.line(".").' name=bookmark line='.line(".").' buffer='.winbufnr(0)<CR>
 
 "yank current buffer name
-nnoremap <silent> cp :let @" = expand("%")<CR>
+nnoremap <silent> cp :let @* = expand("%")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
