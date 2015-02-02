@@ -575,6 +575,14 @@ nnoremap <leader>m :exe 'sign place '.line(".").' name=bookmark line='.line(".")
 
 "yank current buffer name
 nnoremap <silent> cp :let @* = expand("%")<CR>
+
+"put cursor at the top of window after jump to a tag
+function MyTag(word)
+        exe "tag" a:word
+        normal zt
+endfunction
+
+nnoremap <silent> <C-]> :call MyTag(expand("<cword>"))<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
