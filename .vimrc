@@ -581,8 +581,17 @@ function MyTag(word)
         exe "tag" a:word
         normal zt
 endfunction
-
 nnoremap <silent> <C-]> :call MyTag(expand("<cword>"))<CR>
+
+"Diff current buffer and the original file
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
