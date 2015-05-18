@@ -252,9 +252,11 @@ map <leader>r :call CallGrepVim()<CR>
 function! CallGrepVim()
 	let pattern = input("Search for pattern: ", expand("<cword>"))
 	execute "Rfgrep" pattern
-	call search(pattern)
-	call matchadd('Search', pattern)
-	let @/ = pattern
+	if v:shell_error == 0
+		call search(pattern)
+		call matchadd('Search', pattern)
+		let @/ = pattern
+	endif
 endfunction
 
 "---------For LookUpFile------------------
