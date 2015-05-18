@@ -30,8 +30,8 @@ endfunction
 
 function! s:EasyFind()
     
-    let l:filetofind = input('Input file to find:')
-    let l:path = input('Input path to find:')
+    let l:filetofind = input('Input file to find:', '', 'file')
+    let l:path = input('Input path to find:', '', 'file')
     if l:filetofind ==# ''
         echo "You need to input a file to find!"
         return
@@ -40,13 +40,40 @@ function! s:EasyFind()
         let l:path = '.'
     endif
 
-    execute "!find " . l:path . " -name " . l:filetofind
+    "execute "!find " . l:path . " -name " . l:filetofind
+    let l:cmd = "find " . l:path . " -name " . l:filetofind
 
-    if g:quickfix_is_open
-        botright cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
+    """"""""""""""""""""""""""""""""
+    let cmd_output = system(l:cmd)
+
+    if cmd_output == ""
+        echohl WarningMsg |
+        \ echomsg "Error: File " . l:filetofind . " not found" |
+        \ echohl None
+        return
+    endif
+
+    let tmpfile = tempname()
+
+    exe "redir! > " . tmpfile
+    silent echon cmd_output
+    redir END
+
+    let old_efm = &efm
+    set efm=%f
+
+    if exists(":cgetfile")
+	execute "silent! cgetfile " . tmpfile
     else
+	execute "silent! cfile " . tmpfile
+    endif
+
+    let &efm = old_efm
+
+    call delete(tmpfile)
+    """"""""""""""""""""""""""""""""
+
+    if g:quickfix_is_open == 0
         let g:quickfix_return_to_window = winnr()
         botright copen
         let g:quickfix_is_open = 1
