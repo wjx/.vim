@@ -245,10 +245,17 @@ map <leader>p :cp<cr>
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git'
 set grepprg=/bin/grep\ -nH
 map <leader>b :Bgrep<cr>
-map <leader>r :Rgrep<cr>
+map <leader>r :call CallGrepVim()<CR>
+function! CallGrepVim()
+	let pattern = input("Search for pattern: ", expand("<cword>"))
+	execute "Rfgrep" pattern
+	call search(pattern)
+	call matchadd('Search', pattern)
+	let @/ = pattern
+endfunction
 
 "---------For LookUpFile------------------
 let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
@@ -577,7 +584,7 @@ nnoremap <leader>m :exe 'sign place '.line(".").' name=bookmark line='.line(".")
 nnoremap <silent> cp :let @* = expand("%")<CR>
 
 "put cursor at the top of window after jump to a tag
-function MyTag(word)
+function! MyTag(word)
         exe "tag" a:word
         normal zt
 endfunction
