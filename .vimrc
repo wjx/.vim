@@ -247,11 +247,11 @@ map <leader>p :cp<cr>
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git'
 set grepprg=/bin/grep\ -nH
-map <leader>b :Bgrep<cr>
-map <leader>r :call CallGrepVim()<CR>
-function! CallGrepVim()
+map <leader>b :call CallGrepVim('Bgrep')<CR>
+map <leader>r :call CallGrepVim('Rfgrep')<CR>
+function! CallGrepVim(cmd)
 	let pattern = input("Search for pattern: ", expand("<cword>"))
-	execute "Rfgrep" escape(pattern, ' ')
+	execute a:cmd escape(pattern, ' ')
 	if v:shell_error == 0
 		call search(pattern)
 		call matchadd('Search', pattern)
