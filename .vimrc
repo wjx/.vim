@@ -269,6 +269,19 @@ function! CallGrepVim(cmd, mode)
 	endif
 endfunction
 
+"For lid.vim
+nnoremap <silent> <leader>L :call IdUtils('Lid')<CR>
+nnoremap <silent> <leader>A :call IdUtils('Aid')<CR>
+function! IdUtils(cmd)
+	let l:cword = expand("<cword>")
+	execute a:cmd l:cword
+	if v:shell_error == 0
+		call search(l:cword)
+		call matchadd('Search', l:cword)
+		let @/ = l:cword
+	endif
+endfunction
+
 "---------For LookUpFile------------------
 let g:LookupFile_TagExpr=string('./tagsForLookUpFile')
 
