@@ -261,7 +261,12 @@ function! CallGrepVim(cmd, mode)
 		let @a = old_a
 	endif
 	let pattern = input("Search for pattern: ", default)
+
+	let l:lc_all_bak = $LC_ALL
+	let $LC_ALL = 'C'
 	execute a:cmd escape(pattern, ' ')
+	let $LC_ALL = l:lc_all_bak
+
 	if v:shell_error == 0
 		call search(pattern)
 		call matchadd('Search', pattern)
