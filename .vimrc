@@ -125,7 +125,7 @@ set ffs=unix,dos,mac "Default file types
 "}}}
 
 set lbr
-set tw=80
+"set tw=80
 
 set ai "Auto indent
 set si "Smart indet
@@ -395,9 +395,9 @@ nmap <C-Space><C-Space>d
 let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
-nnoremap <silent> sj     :FufBuffer<CR>
-nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> sK     :FufFileWithFullCwd<CR>
+"nnoremap <silent> sj     :FufBuffer<CR>
+"nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
+"nnoremap <silent> sK     :FufFileWithFullCwd<CR>
 nnoremap <silent> s<C-k> :FufFile<CR>
 nnoremap <silent> sl     :FufCoverageFile<CR>
 nnoremap <silent> sL     :FufCoverageFileChange<CR>
@@ -445,7 +445,7 @@ let g:MultipleSearchMaxColors = 50
 "For easymotion
 map \ <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
-map  <space> <Plug>(easymotion-sn)
+map  <space> <Plug>(easymotion-bd-w)
 omap / <Plug>(easymotion-tn)
 
 "showmarks.vim
@@ -463,6 +463,16 @@ let g:ctrlp_extensions = ['buffertag']
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <C-l> :CtrlP <C-R>=expand("%:p:h")<CR><CR>
 
+"Tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
+
+"vim-bookmarks
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
+
+"mru
+let MRU_Max_Entries = 1000
+
 " => Omni complete functions"{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -472,10 +482,20 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nu
 
+"tags
 set tags=$PWD/tags
-set csto=1
-
+"set csto=1
+set cscopeprg='gtags-cscope'
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
+function! LoadDatabase()
+    let db = findfile("GTAGS", ".;")
+    if (!empty(db))
+        set nocscopeverbose
+        exe "cs add " . db
+        set cscopeverbose
+    endif
+endfunction
+autocmd BufEnter *.[ch] call LoadDatabase()
 
 "Fast edit .vimrc
 nmap <F6> :e ~/.vimrc<CR>
@@ -534,8 +554,14 @@ inoremap <silent> <C-x> <Delete>
 "Fast back to NORMAL from INSERT mode,and write file
 inoremap jk <ESC>:w!<cr>
 
+"save readonly files in vim
+cmap w!! w !sudo tee % >/dev/null
+
 "Fast grep
 "nnoremap <leader>g :silent execute "grep! -rsw " . shellescape("<cword>") . " ./"<cr>:copen<cr>
+
+"new file in the directory of current buffer
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 filetype plugin indent on
 set completeopt=longest,menu
@@ -629,8 +655,40 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+"temp settings
+"set tabstop=4 shiftwidth=4 expandtab
+
+set updatetime=2000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "}}}
 "
+"Neovim{{{
+if has('nvim')
+	let g:terminal_scrollback_buffer_size=100000
+        tnoremap <Esc> <C-\><C-n>
+
+	tnoremap <A-h> <C-\><C-n><C-w>h
+	tnoremap <A-j> <C-\><C-n><C-w>j
+	tnoremap <A-k> <C-\><C-n><C-w>k
+	tnoremap <A-l> <C-\><C-n><C-w>l
+	nnoremap <A-h> <C-w>h
+	nnoremap <A-j> <C-w>j
+	nnoremap <A-k> <C-w>k
+	nnoremap <A-l> <C-w>l
+endif
+"}}}
+"Unite.vim
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+let g:unite_source_rec_max_cache_files = 100000
+call unite#custom#source('file_rec,file_rec/async',
+\ 'max_candidates', 0)
+call unite#custom#source('file,file_rec,file_rec/async',
+\ 'ignore_pattern', '\v(\.so|\.o|\.mod\.c|\.mod\.o|\.ko|\.o.cmd)$')
+nnoremap sj :<C-u>Unite -start-insert buffer_tab<CR>
+nnoremap sJ :<C-u>Unite -start-insert buffer<CR>
+nnoremap sk :<C-u>Unite -start-insert file<CR>
+nnoremap sl :<C-u>UniteWithBufferDir -start-insert file<CR>
+nnoremap sr :<C-u>Unite -start-insert register<CR>
