@@ -77,11 +77,11 @@ if has("gui_running")
     set guioptions-=T
     set t_Co=256
     set background=dark
-    colorscheme blue
+    "colorscheme blue
     "colorscheme delek
     "colorscheme evening
     "colorscheme murphy
-    "colorscheme slate
+    colorscheme slate
     "colorscheme darkblue
     "colorscheme desert
     "colorscheme koehler
@@ -101,7 +101,7 @@ else
     "colorscheme delek
     "colorscheme evening
     "colorscheme murphy
-    "colorscheme slate
+    colorscheme slate
     "colorscheme darkblue
     "colorscheme desert
     "colorscheme koehler
@@ -115,7 +115,7 @@ else
     "colorscheme shine
     "colorscheme zellner
     "colorscheme aqua
-    colorscheme molokai
+    "colorscheme molokai
     set background=dark
     set t_Co=256
 endif
@@ -495,7 +495,7 @@ function! LoadDatabase()
         set cscopeverbose
     endif
 endfunction
-autocmd BufEnter *.[ch] call LoadDatabase()
+"autocmd BufEnter *.[ch] call LoadDatabase()
 
 "Fast edit .vimrc
 nmap <F6> :e ~/.vimrc<CR>
