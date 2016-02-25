@@ -547,10 +547,6 @@ cnoremap <Esc>f <S-Right>
 nnoremap <silent> <C-j> :bn<cr>
 nnoremap <silent> <C-k> :bp<cr>
 
-"<BS> and <Delete>
-inoremap <silent> <C-z> <BS>
-inoremap <silent> <C-x> <Delete>
-
 "Fast back to NORMAL from INSERT mode,and write file
 inoremap jk <ESC>:w!<cr>
 
@@ -602,7 +598,15 @@ function! s:YOperator(type, ...)
     endif
 endfunction
 nnoremap P "+p
+vnoremap P "+p
 cnoremap P <C-r>+
+nnoremap <F4> viw"+p
+
+"http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
+"replaces the current word with the last text that was yanked or deleted
+nnoremap S "_diwP
+"replace visually selected text with the last yanked text
+vnoremap S "_dP
 
 "Go back to the start of visual selection and Search in it
 "^_ == <C-/> in gnome-terminal
