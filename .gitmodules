@@ -7,3 +7,6 @@
 [submodule "bundle/grep"]
 	path = bundle/grep
 	url = https://github.com/yegappan/grep.git
+[submodule "bundle/mru"]
+	path = bundle/mru
+	url = https://github.com/yegappan/mru.git
