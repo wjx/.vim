@@ -31,3 +31,6 @@
 [submodule "bundle/lid"]
 	path = bundle/lid
 	url = https://github.com/yegappan/lid.git
+[submodule "bundle/tabpagebuffer.vim"]
+	path = bundle/tabpagebuffer.vim
+	url = https://github.com/Shougo/tabpagebuffer.vim.git
