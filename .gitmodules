@@ -19,3 +19,6 @@
 [submodule "bundle/vim-bookmarks"]
 	path = bundle/vim-bookmarks
 	url = https://github.com/MattesGroeger/vim-bookmarks.git
+[submodule "bundle/vim-flagship"]
+	path = bundle/vim-flagship
+	url = git://github.com/tpope/vim-flagship.git
