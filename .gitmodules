@@ -49,3 +49,6 @@
 [submodule "bundle/VisIncr"]
 	path = bundle/VisIncr
 	url = https://github.com/vim-scripts/VisIncr
+[submodule "bundle/vim-DrawIt"]
+	path = bundle/vim-DrawIt
+	url = https://github.com/hrj/vim-DrawIt.git
