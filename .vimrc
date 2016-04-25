@@ -706,3 +706,4 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
+nnoremap <F9> :UndotreeToggle<cr>
