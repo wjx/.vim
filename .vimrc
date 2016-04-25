@@ -684,6 +684,7 @@ if has('nvim')
 	nnoremap <A-l> <C-w>l
 endif
 "}}}
+
 "Unite.vim
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 let g:unite_source_rec_max_cache_files = 100000
@@ -699,3 +700,9 @@ nnoremap sr :<C-u>Unite -start-insert register<CR>
 
 "vim-bookmarks
 let g:bookmark_no_default_key_mappings = 1
+
+"undotree.vim
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
