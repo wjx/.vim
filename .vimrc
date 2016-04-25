@@ -696,3 +696,6 @@ nnoremap sJ :<C-u>Unite -start-insert buffer<CR>
 nnoremap sk :<C-u>Unite -start-insert file<CR>
 nnoremap sl :<C-u>UniteWithBufferDir -start-insert file<CR>
 nnoremap sr :<C-u>Unite -start-insert register<CR>
+
+"vim-bookmarks
+let g:bookmark_no_default_key_mappings = 1
