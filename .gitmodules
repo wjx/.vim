@@ -52,3 +52,6 @@
 [submodule "bundle/vim-DrawIt"]
 	path = bundle/vim-DrawIt
 	url = https://github.com/hrj/vim-DrawIt.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = https://github.com/mbbill/undotree.git
