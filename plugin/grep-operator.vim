@@ -73,11 +73,8 @@ function! s:EasyFind()
     call delete(tmpfile)
     """"""""""""""""""""""""""""""""
 
-    if g:quickfix_is_open == 0
-        let g:quickfix_return_to_window = winnr()
-        botright copen
-        let g:quickfix_is_open = 1
-    endif
+    let g:quickfix_return_to_window = winnr()
+    botright copen
 endfunction
 
 function! s:GrepOperatorWithInput(type)
