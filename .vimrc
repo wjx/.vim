@@ -497,6 +497,9 @@ function! LoadDatabase()
 endfunction
 "autocmd BufEnter *.[ch] call LoadDatabase()
 
+"close quickfix window after select entries in it.
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
 "Fast edit .vimrc
 nmap <F6> :e ~/.vimrc<CR>
 map <F7> :so ~/.vimrc<CR>
