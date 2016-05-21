@@ -499,6 +499,7 @@ endfunction
 
 "close quickfix window after select entries in it.
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+let g:qfenter_open_map = []
 
 "Fast edit .vimrc
 nmap <F6> :e ~/.vimrc<CR>
