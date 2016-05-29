@@ -40,8 +40,8 @@ function! s:EasyFind()
         let l:path = '.'
     endif
 
-    "execute "!find " . l:path . " -name " . l:filetofind
-    let l:cmd = "find " . l:path . " -name " . l:filetofind
+    "execute "!find " . l:path . " -iname " . l:filetofind
+    let l:cmd = "find " . l:path . " -iname " . l:filetofind
 
     """"""""""""""""""""""""""""""""
     let cmd_output = system(l:cmd)
