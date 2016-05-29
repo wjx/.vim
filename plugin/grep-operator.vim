@@ -30,7 +30,7 @@ endfunction
 
 function! s:EasyFind()
     
-    let l:filetofind = input('Input file to find:', '', 'file')
+    let l:filetofind = input('Input file to find:', expand("<cword>"), 'file')
     let l:path = input('Input path to find:', '', 'file')
     if l:filetofind ==# ''
         echo "You need to input a file to find!"
