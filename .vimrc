@@ -668,6 +668,8 @@ com! DiffSaved call s:DiffWithSaved()
 "set tabstop=4 shiftwidth=4 expandtab
 
 set updatetime=2000
+
+set showbreak=↪
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       MISC END --- place MISC AT Last will have problem,why?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
